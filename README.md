@@ -1,6 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
+<!-- This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
@@ -22,19 +22,19 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-##group_users table
+ -->
+## group_users table
 
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null :false, foreign_key :true|
 |group_id|references|null :false, foreign_key :true|
 
-###Association
+### Association
 - belongs_to :user
 - belongs_to :group
 
-##messages table
+## messages table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -43,29 +43,29 @@ Things you may want to cover:
 |user_id|references|null :false, foreign_key :true|
 |group_id|references|null :false, foreign_key :true|
 
-###Association
+### Association
 - belongs_to :user
 - belongs_to :group
 
-##users table
+## users table
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false, unique :true|
 |email|string|null :false, unique :true|
 
-###Association
+### Association
 - has_many :messages
 - has_many :group_users
 - has_many :group, through::group_users
 
-##groups table
+## groups table
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false, unique :true, index|
 
-###Association
+### Association
 - has_many :messages
 - has_many :group_users
 - belongs_to :users through::group_users

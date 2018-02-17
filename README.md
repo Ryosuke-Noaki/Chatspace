@@ -4,7 +4,6 @@
 
 $ ruby -v  ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-darwin17]
 $ rails -v  Rails 5.1.5
-$ rbenv --version  rbenv 1.1.1
 
 
 ## group_users table

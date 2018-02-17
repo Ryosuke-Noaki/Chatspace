@@ -1,5 +1,8 @@
 # Chatspace
 
+Ruby 2.3.1
+Rails 5.0.6
+
 ## group_users table
 
 |Column|Type|Options|

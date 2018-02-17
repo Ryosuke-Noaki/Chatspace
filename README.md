@@ -1,7 +1,10 @@
 # Chatspace
 
-Ruby 2.3.1
-Rails 5.0.6
+### version
+
+$ ruby -v  ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-darwin17]
+$ rails -v  Rails 5.1.5
+
 
 ## group_users table
 

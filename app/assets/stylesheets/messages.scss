@@ -1,0 +1,171 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.side-content {
+  width: 300px;
+  height: 100vh;
+  background-color: $navy;
+  float: left;
+
+
+  &__header {
+    padding:  0 20px;
+    height: 100px;
+    background-color: $dark-navy;
+
+    h5 {
+      color: $letter-white;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 100px;
+      letter-spacing: 2px;
+      float: left;
+    }
+
+    i {
+      color: $letter-white;
+      font-size: 20px;
+      line-height: 100px;
+      letter-spacing: 6px;
+      float: right;
+    }
+  }
+
+  &__group-content {
+    padding: 20px 20px 40px;
+    height: 31px;
+    background-color: $navy;
+
+    &--name {
+    font-size: 15px;
+    padding-bottom: 5px;
+    color: $letter-white;
+    }
+
+    &--message {
+    font-size: 11px;
+    color: $letter-white;
+    text-align: left;
+    }
+  }
+}
+
+
+.main-content {
+  width: calc(100vw - 300px);
+  height: 100vh;
+  background-color: $white-smoke;
+  float: right;
+
+  &__header {
+    padding: 0px 40px;
+    height: 100px;
+    background-color: white;
+
+    &__name {
+      float: left;
+      h2 {
+        padding: 30px 0 10px;
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: $main-group-black;
+      }
+
+      p {
+        padding-bottom: 15px;
+        font-size: 12px;
+        color: $leter-lightgray;
+      }
+    }
+
+    &__edit-btn {
+        float: right;
+        display: inline-block;
+        margin: 28px 0;
+        padding: 0 20px;
+        line-height: 40px;
+        color: $light_blue;
+        font-size: 14px;
+        border: 2px solid;
+        text-align: center;
+    }
+  }
+
+  &__chat-content {
+    padding: 46px 40px 40px;
+    height: 100px;
+    background-color: $white-smoke;
+
+    .chat-body {
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+
+      &--name {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: $letter-black;
+        float: left;
+      }
+
+      &--time {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 12px;
+        color: $time-color;
+      }
+
+      &--message {
+        font-size: 14px;
+        color: $letter-black;
+        float: left;
+        clear: both;
+      }
+    }
+  }
+
+
+
+  &__footer {
+    padding: 20px 40px;
+    position: fixed;
+    bottom: 0;
+    width: calc(100vw - 380px);
+    height: 50px;
+    background-color: $light-gray;
+
+    textarea {
+      padding-left: 10px;
+      width: 890px;           //940px;
+      height: 50px;
+      line-height: 50px;
+      color: $letter-black;
+      font-size: 16px;
+      border: none;
+      resize: none;
+      float: left;
+    }
+
+    &--image {
+      width: 30px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      background-color: white;
+      float: left;
+    }
+
+    &--send-btn {
+      display: inline-block;
+      padding-right: 30px;
+      padding-left: 30px;
+      line-height: 50px;
+      background-color: $light_blue;
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      float: right;
+    }
+  }
+}

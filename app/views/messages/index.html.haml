@@ -1,28 +1,28 @@
-/ = link_to 'ログアウト', destroy_user_session_path, method: :delete
+= link_to 'ログアウト', destroy_user_session_path, method: :delete
+= render "parts/side-content"
+/ .side-content
+/   .side-content__header
+/     %h5 野秋良介
+/     %i.fa.fa-cog
+/     %i.fa.fa-pencil-square-o
 
-.side-content
-  .side-content__header
-    %h5 野秋良介
-    %i.fa.fa-cog
-    %i.fa.fa-pencil-square-o
+/   .side-content__group-content
+/     .side-content__group-content--name
+/       %p グループ１
+/     .side-content__group-content--message
+/       %p test1
 
-  .side-content__group-content
-    .side-content__group-content--name
-      %p グループ１
-    .side-content__group-content--message
-      %p test1
+/   .side-content__group-content
+/     .side-content__group-content--name
+/       %p グループ2
+/     .side-content__group-content--message
+/       %p test2
 
-  .side-content__group-content
-    .side-content__group-content--name
-      %p グループ2
-    .side-content__group-content--message
-      %p test2
-
-  .side-content__group-content
-    .side-content__group-content--name
-      %p グループ3
-    .side-content__group-content--message
-      %p test3
+/   .side-content__group-content
+/     .side-content__group-content--name
+/       %p グループ3
+/     .side-content__group-content--message
+/       %p test3
 
 .main-content
   .main-content__header

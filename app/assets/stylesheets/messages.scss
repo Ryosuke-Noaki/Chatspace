@@ -22,12 +22,16 @@
       float: left;
     }
 
-    i {
-      color: $letter-white;
-      font-size: 20px;
-      line-height: 100px;
-      letter-spacing: 6px;
-      float: right;
+    &__icon {
+
+      i {
+        color: $letter-white;
+        font-size: 20px;
+        line-height: 100px;
+        letter-spacing: 6px;
+        float: right;
+      }
+
     }
   }
 

@@ -12,5 +12,5 @@
 class GroupUser < ApplicationRecord
   belongs_to :user
   belongs_to :group
-  validates :user_id, :group_id, numericality: { only_integer: true }, presence: true
+  validates :user_id, :group_id, presence: true,  numericality: { only_integer: true }
 end

@@ -8,20 +8,11 @@
       = link_to edit_user_path(current_user), class: "side-content__header__icon" do
         = fa_icon "cog"
 
-  .side-content__group-content
-    .side-content__group-content--name
-      %p グループ名
-    .side-content__group-content--message
-      %p 新着メッセージ
-
-  .side-content__group-content
-    .side-content__group-content--name
-      %p グループ名
-    .side-content__group-content--message
-      %p 新着メッセージ
-
-  .side-content__group-content
-    .side-content__group-content--name
-      %p グループ名
-    .side-content__group-content--message
-      %p 新着メッセージ
+  .side-content__group-contents
+    - current_user.groups.each do |group|
+      .side-content__group-contents--list
+        = link_to group_messages_path(group) do
+          .side-content__group-content--name
+            = group.name
+          .side-content__group-content--message
+            メッセージはまだありません。

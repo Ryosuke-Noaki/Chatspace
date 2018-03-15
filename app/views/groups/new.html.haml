@@ -4,9 +4,9 @@
     - if @group.errors.any?
       .chat-group-form__errors
         %h2
-          #{@group.count_error_message}件のエラーが発生しました。
+          #{@group.error_message_num}件のエラーが発生しました。
         %ul
-          - @group.add_error_message.each do |message|
+          - @group.error_messages.each do |message|
             %li
               = message
     .chat-group-form__field

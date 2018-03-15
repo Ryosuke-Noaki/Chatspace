@@ -16,13 +16,11 @@ class Group < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   def associate_users(user_ids:)
-    user_ids.each do |user_id|
-      self.users << User.where(id: user_ids)
-    end
+    self.users << User.where(id: user_ids)
   end
 
   def error_message_num
-    self.errors.full_messages.count
+    self.error_messages
   end
 
   def error_messages

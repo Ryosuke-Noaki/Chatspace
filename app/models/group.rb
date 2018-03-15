@@ -12,5 +12,22 @@ class Group < ApplicationRecord
   has_many :messages
   has_many :group_users
   has_many :users, through: :group_users
+
   validates :name, presence: true, uniqueness: true
+
+  def associate_users(user_ids:)
+    self.users << User.where(id: user_ids)
+  end
+
+  def error_message_num
+    self.error_messages
+  end
+
+  def error_messages
+    self.errors.full_messages
+  end
+
 end
+
+
+

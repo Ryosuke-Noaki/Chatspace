@@ -20,7 +20,7 @@ class Group < ApplicationRecord
   end
 
   def error_message_num
-    self.error_messages
+    self.error_messages.count
   end
 
   def error_messages

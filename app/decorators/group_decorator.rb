@@ -1,7 +1,6 @@
 class GroupDecorator < Draper::Decorator
   delegate_all
 
-
   def error_message_num
     self.error_messages
   end

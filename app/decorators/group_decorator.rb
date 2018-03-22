@@ -2,11 +2,11 @@ class GroupDecorator < Draper::Decorator
   delegate_all
 
   def error_message_num
-    self.error_messages
+    object.error_messages
   end
 
   def error_messages
-    self.errors.full_messages
+    object.errors.full_messages
   end
 
   # Define presentation-specific methods here. Helpers are accessed through

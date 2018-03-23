@@ -15,5 +15,13 @@ class Message < ApplicationRecord
   belongs_to :group
   belongs_to :user
 
-  validates :body, presence: true, unless: :image?
+  validates :group_id, :user_id, presence: true, numericality: {only_integer: true}
+  validates :body_or_image
+
+  private
+
+  def body_or_image
+    body.presence || image.presence
+  end
+
 end

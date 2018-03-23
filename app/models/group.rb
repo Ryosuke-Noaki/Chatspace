@@ -19,6 +19,14 @@ class Group < ApplicationRecord
     self.users << User.where(id: user_ids)
   end
 
+  def error_message_num
+    self.error_messages.count
+  end
+
+  def error_messages
+    self.errors.full_messages
+  end
+
 end
 
 

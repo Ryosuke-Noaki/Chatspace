@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(name: group_params[:name])
+    @group = Group.new(name: group_params[:name]).decorate
     if @group.save
       @group.associate_users(user_ids: group_params[:user_ids])
       redirect_to root_path, notice: 'グループ作成に成功しました'

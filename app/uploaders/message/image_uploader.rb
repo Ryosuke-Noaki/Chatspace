@@ -8,9 +8,8 @@ class Message::ImageUploader < CarrierWave::Uploader::Base
 
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "groups/#{model.group.id}"
   end
-
 
   def extension_whitelist
     %w(jpg jpeg png)

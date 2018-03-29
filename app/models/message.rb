@@ -16,7 +16,7 @@ class Message < ApplicationRecord
   belongs_to :user
 
   validates :group_id, :user_id, presence: true, numericality: {only_integer: true}
-  validates :body_or_image
+  validate :body_or_image
 
   mount_uploader :image, Message::ImageUploader
 

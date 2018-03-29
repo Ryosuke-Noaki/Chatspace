@@ -137,7 +137,7 @@
     height: 50px;
     background-color: $light-gray;
 
-    textarea {
+    &__message {
       padding-left: 10px;
       width: 890px;
       height: 50px;
@@ -149,25 +149,25 @@
       float: left;
     }
 
-    &--image {
+    &--file {
       width: 30px;
       height: 50px;
       text-align: center;
       line-height: 50px;
       background-color: white;
       float: left;
-    }
 
-    &--send-btn {
-      display: inline-block;
-      padding-right: 30px;
-      padding-left: 30px;
-      line-height: 50px;
-      background-color: $light_blue;
-      font-size: 16px;
-      text-align: center;
-      color: white;
-      float: right;
+      &__submit {
+        display: inline-block;
+        padding-right: 30px;
+        padding-left: 30px;
+        line-height: 50px;
+        background-color: $light_blue;
+        font-size: 16px;
+        text-align: center;
+        color: white;
+        float: right;
+      }
     }
   }
 }

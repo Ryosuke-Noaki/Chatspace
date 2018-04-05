@@ -5,4 +5,7 @@ class MessageDecorator < Draper::Decorator
     object.user.name
   end
 
+  def image_url
+    object.image.url
+  end
 end

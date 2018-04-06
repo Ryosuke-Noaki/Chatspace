@@ -77,6 +77,15 @@
         padding-bottom: 15px;
         font-size: 12px;
         color: $leter-lightgray;
+        float: left;
+      }
+
+      span {
+        padding-bottom: 15px;
+        font-size: 12px;
+        color: $leter-lightgray;
+        float: right;
+        margin-left: 5px;
       }
     }
 
@@ -90,16 +99,21 @@
         font-size: 14px;
         border: 2px solid;
         text-align: center;
+
+        &__inside {
+          text-decoration: none;
+          color: $light_blue;
+        }
     }
   }
 
-  &__chat-content {
+  &__chat-contents {
     padding: 46px 40px 40px;
-    height: 100px;
+    height: calc(100% - 250px);
     background-color: $white-smoke;
 
     .chat-body {
-      padding-bottom: 20px;
+      padding-bottom: 40px;
       margin-bottom: 40px;
 
       &--name {
@@ -116,6 +130,7 @@
         margin-left: 10px;
         font-size: 12px;
         color: $time-color;
+        float: left;
       }
 
       &--message {
@@ -137,7 +152,7 @@
     height: 50px;
     background-color: $light-gray;
 
-    textarea {
+    &__message {
       padding-left: 10px;
       width: 890px;
       height: 50px;
@@ -149,24 +164,23 @@
       float: left;
     }
 
-    &--image {
+    &--file {
       width: 30px;
       height: 50px;
       text-align: center;
       line-height: 50px;
-      background-color: white;
+      background-color: $button-white;
       float: left;
     }
 
-    &--send-btn {
+    &__submit-messages {
       display: inline-block;
       padding-right: 30px;
       padding-left: 30px;
       line-height: 50px;
       background-color: $light_blue;
       font-size: 16px;
-      text-align: center;
-      color: white;
+      color: $button-white;
       float: right;
     }
   }

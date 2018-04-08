@@ -19,12 +19,12 @@ class Group < ApplicationRecord
     self.users << User.where(id: user_ids)
   end
 
-  def error_message_num
-    self.error_messages.count
-  end
-
-  def error_messages
-    self.errors.full_messages
+  def show_last_message
+    if (last_message = messages.last).present?
+      last_message.present? ? last_message.body : '画像が投稿されています'
+    else
+      'まだメッセージが投稿されていません'
+    end
   end
 
 end

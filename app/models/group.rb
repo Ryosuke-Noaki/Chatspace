@@ -19,14 +19,6 @@ class Group < ApplicationRecord
     self.users << User.where(id: user_ids)
   end
 
-  def show_last_message
-    if (last_message = messages.last).present?
-      last_message.present? ? last_message.body : '画像が投稿されています'
-    else
-      'まだメッセージが投稿されていません'
-    end
-  end
-
 end
 
 

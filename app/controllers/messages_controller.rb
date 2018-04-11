@@ -4,6 +4,8 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @messages = @group.messages.includes(:user).decorate
+    groups = current_user.groups
+    @groups = GroupDecorator.decorate_collection(groups)
   end
 
   def create

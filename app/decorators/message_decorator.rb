@@ -8,4 +8,5 @@ class MessageDecorator < Draper::Decorator
   def image_url
     object.image.url
   end
+
 end

@@ -13,9 +13,9 @@
 
 FactoryBot.define do
   factory :message do
-    body Faker::Lorem.sentence
-    image File.open("#{Rails.root}/public/images/no_image.jpg")
-    associate :user, factory: :user
-    associate :group, factory: :group
+    body {Faker::Lorem.sentence}
+    association :user, factory: :user
+    association :group, factory: :group
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public', 'uemoto.jpg')) }
   end
 end

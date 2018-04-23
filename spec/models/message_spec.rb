@@ -38,14 +38,14 @@ RSpec.describe Message, type: :model do
     end
 
     context 'can not save' do
-      it 'is invalid without content and image' do
+      it 'is invalid without body and image' do
         message = build(:message, body: nil, image: nil)
         message.valid?
         expect(message.errors[:body_or_image]).to include('を入力してください')
       end
 
-      it 'is invalid without content and image' do
-        message = build(:message, body: nil, image: "")
+      it 'is invalid without body and image' do
+        message = build(:message, body: "", image: "")
         message.valid?
         expect(message.errors[:body_or_image]).to include('を入力してください')
       end

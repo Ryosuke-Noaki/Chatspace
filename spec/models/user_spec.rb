@@ -44,14 +44,32 @@ RSpec.describe User, type: :model do
         expect(user.errors[:email]).to include('を入力してください')
       end
 
+      it 'is invalid without email' do
+        user = build(:user, email: "")
+        user.valid?
+        expect(user.errors[:email]).to include('を入力してください')
+      end
+
       it 'is invalid without password' do
         user = build(:user, password: nil)
         user.valid?
         expect(user.errors[:password]).to include('を入力してください')
       end
 
+      it 'is invalid without password' do
+        user = build(:user, password: "")
+        user.valid?
+        expect(user.errors[:password]).to include('を入力してください')
+      end
+
       it 'is invalid without name' do
         user = build(:user, name: nil)
+        user.valid?
+        expect(user.errors[:name]).to include('を入力してください')
+      end
+
+      it 'is invalid without name' do
+        user = build(:user, name: "")
         user.valid?
         expect(user.errors[:name]).to include('を入力してください')
       end
@@ -73,8 +91,20 @@ RSpec.describe User, type: :model do
         expect(user.errors[:email]).to include('を入力してください')
       end
 
+      it 'is invalid without email' do
+        user = build(:user, email: "")
+        user.valid?
+        expect(user.errors[:email]).to include('を入力してください')
+      end
+
       it 'is invalid without name' do
         user = build(:user, name: nil)
+        user.valid?
+        expect(user.errors[:name]).to include('を入力してください')
+      end
+
+      it 'is invalid without name' do
+        user = build(:user, name: "")
         user.valid?
         expect(user.errors[:name]).to include('を入力してください')
       end

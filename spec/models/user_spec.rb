@@ -24,6 +24,7 @@ RSpec.describe User, type: :model do
   describe '#create' do
     context 'can save' do
       let(:user) { build(:user) }
+
       it 'is valid with email' do
         expect(user).to be_valid
       end
@@ -33,33 +34,40 @@ RSpec.describe User, type: :model do
       end
 
       it 'is valid with name' do
-        expect(user).to be_valid
+        user = build(:user, email: Faker::Internet.free_email)
       end
     end
 
     context 'can not save' do
-      it 'is invalid without email' do
+      let(:user) { build(:user) }
+      it 'is invalid with empty email' do
         user = build(:user, email: nil)
         user.valid?
         expect(user.errors[:email]).to include('を入力してください')
       end
 
-      it 'is invalid without email' do
+      it 'is invalid with empty email' do
         user = build(:user, email: "")
         user.valid?
         expect(user.errors[:email]).to include('を入力してください')
       end
 
-      it 'is invalid without password' do
+      it 'is invalid with empty password' do
         user = build(:user, password: nil)
         user.valid?
         expect(user.errors[:password]).to include('を入力してください')
       end
 
-      it 'is invalid without password' do
+      it 'is invalid with empty password' do
         user = build(:user, password: "")
         user.valid?
         expect(user.errors[:password]).to include('を入力してください')
+      end
+
+      it 'is invalid if password and password_confirmation are not same' do
+        user.password = Faker::Internet.password
+        user.valid?
+        expect(user.password_confirmation).not_to eq(user.password)
       end
 
       it 'is invalid without name' do
@@ -77,38 +85,22 @@ RSpec.describe User, type: :model do
   end
 
   describe '#update' do
+    let(:user) { create(:user) }
+
     context 'can save' do
-      let(:user) { build(:user) }
       it 'is valid with email and name' do
-        expect(user).to be_valid
+        expect(user.update(name: "テスト", email: "test@gmail.com")).to be true
       end
     end
 
     context 'can not save' do
       it 'is invalid without email' do
-        user = build(:user, email: nil)
-        user.valid?
-        expect(user.errors[:email]).to include('を入力してください')
-      end
-
-      it 'is invalid without email' do
-        user = build(:user, email: "")
-        user.valid?
-        expect(user.errors[:email]).to include('を入力してください')
+        expect(user.update(name: "テスト", email: nil)).to be false
       end
 
       it 'is invalid without name' do
-        user = build(:user, name: nil)
-        user.valid?
-        expect(user.errors[:name]).to include('を入力してください')
-      end
-
-      it 'is invalid without name' do
-        user = build(:user, name: "")
-        user.valid?
-        expect(user.errors[:name]).to include('を入力してください')
+        expect(user.update(name: nil, email: "test@gmail.com")).to be false
       end
     end
   end
 end
-

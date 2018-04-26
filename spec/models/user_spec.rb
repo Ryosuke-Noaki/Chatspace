@@ -94,12 +94,20 @@ RSpec.describe User, type: :model do
     end
 
     context 'can not save' do
-      it 'is invalid without email' do
+      it 'is invalid with empty email' do
         expect(user.update(name: "テスト", email: nil)).to be false
+      end
+
+      it 'is invalid with empty email' do
+        expect(user.update(name: "テスト", email: "")).to be false
       end
 
       it 'is invalid without name' do
         expect(user.update(name: nil, email: "test@gmail.com")).to be false
+      end
+
+      it 'is invalid without name' do
+        expect(user.update(name: "", email: "test@gmail.com")).to be false
       end
     end
   end

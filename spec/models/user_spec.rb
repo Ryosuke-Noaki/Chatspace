@@ -71,12 +71,6 @@ RSpec.describe User, type: :model do
         expect(user.errors[:password_confirmation]).to include("とPasswordの入力が一致しません")
       end
 
-      #  it 'is invalid if password and password_confirmation are not same' do
-      #   user.password = Faker::Internet.password
-      #   user.valid?
-      #   expect(user.password_confirmation).not_to eq(user.password)
-      # end
-
       it 'is invalid without name' do
         user = build(:user, name: nil)
         user.valid?

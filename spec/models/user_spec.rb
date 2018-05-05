@@ -30,11 +30,11 @@ RSpec.describe User, type: :model do
       end
 
       it 'is valid with password' do
-        expect(user).to be_valid
+        user = build(:user, password: Faker::Internet.password)
       end
 
       it 'is valid with name' do
-        user = build(:user, email: Faker::Internet.free_email)
+        user = build(:user, name: Faker::Name.last_name)
       end
     end
 
@@ -64,11 +64,18 @@ RSpec.describe User, type: :model do
         expect(user.errors[:password]).to include('を入力してください')
       end
 
-      it 'is invalid if password and password_confirmation are not same' do
-        user.password = Faker::Internet.password
+
+      it 'is invalid with empty password_confirmation' do
+        user = build(:user, password_confirmation: "")
         user.valid?
-        expect(user.password_confirmation).not_to eq(user.password)
+        expect(user.errors[:password_confirmation]).to include("とPasswordの入力が一致しません")
       end
+
+      #  it 'is invalid if password and password_confirmation are not same' do
+      #   user.password = Faker::Internet.password
+      #   user.valid?
+      #   expect(user.password_confirmation).not_to eq(user.password)
+      # end
 
       it 'is invalid without name' do
         user = build(:user, name: nil)

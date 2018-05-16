@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i(edit update)
 
   def index
+    current_user_groups = current_user.groups
+    @current_user_groups = GroupDecorator.decorate_collection(current_user_groups)
   end
 
   def new
@@ -12,7 +14,7 @@ class GroupsController < ApplicationController
     @group = Group.new(name: group_params[:name]).decorate
     if @group.save
       @group.associate_users(user_ids: group_params[:user_ids])
-      redirect_to root_path, notice: 'グループ作成に成功しました'
+      redirect_to group_messages_path(@group), notice: 'グループ作成に成功しました'
     else
       flash.now[:alert] = 'グループ作成に失敗しました'
       render :new

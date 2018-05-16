@@ -33,4 +33,24 @@ RSpec.describe Group,type: :model do
       end
     end
   end
+
+  describe '#update' do
+    let(:group) { create(:group) }
+
+    context 'can save' do
+      it 'is valid with name' do
+        expect(group.update(name: "テスト")).to be true
+      end
+    end
+
+    context 'can not save' do
+      it 'is invalid without name' do
+        expect(group.update(name: nil)).to be false
+      end
+
+      it 'is invalid without name' do
+        expect(group.update(name: "")).to be false
+      end
+    end
+  end
 end

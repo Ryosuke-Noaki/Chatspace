@@ -12,4 +12,7 @@ FactoryBot.define do
   factory :group do
     name Faker::Team.name
   end
+    after(:create) do |group|
+      create(:user, groups: [group])
+    end
 end

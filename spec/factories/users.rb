@@ -26,8 +26,5 @@ FactoryBot.define do
     password password
     password_confirmation password
   end
-    after(:create) do |user|
-      create(:group, users: [user])
-    end
 end
 

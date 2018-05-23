@@ -22,7 +22,7 @@ RSpec.describe Group,type: :model do
       it 'confirms prepared users' do
         group = build(:group)
         users = create_list(:user, 10)
-        user_ids = users.map {|user| user.id.to_i}
+        user_ids = users.map {|user| user.id}
         group.associate_users(user_ids: user_ids)
         expect(group.users).to eq users
       end
@@ -61,11 +61,17 @@ RSpec.describe Group,type: :model do
 
     context 'can not save' do
       it 'is invalid without name' do
-        expect(group.update(name: nil)).to be false
+        group = Group.new
+        group.update(name: nil)
+        group.valid?
+        expect(group.errors[:name]).to include('を入力してください')
       end
 
       it 'is invalid without name' do
-        expect(group.update(name: "")).to be false
+        group = Group.new
+        group.update(name: "")
+        group.valid?
+        expect(group.errors[:name]).to include('を入力してください')
       end
     end
   end

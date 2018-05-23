@@ -22,7 +22,7 @@ RSpec.describe Group,type: :model do
       it 'confirms prepared users' do
         group = build(:group)
         users = create_list(:user, 10)
-        user_ids = users.map {|user| user.id}
+        user_ids = users.map(&:id)
         group.associate_users(user_ids: user_ids)
         expect(group.users).to eq users
       end

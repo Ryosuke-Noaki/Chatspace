@@ -61,14 +61,14 @@ RSpec.describe Group,type: :model do
 
     context 'can not save' do
       it 'is invalid without name' do
-        group = Group.new
+        build(:group)
         group.update(name: nil)
         group.valid?
         expect(group.errors[:name]).to include('を入力してください')
       end
 
       it 'is invalid without name' do
-        group = Group.new
+        build(:group)
         group.update(name: "")
         group.valid?
         expect(group.errors[:name]).to include('を入力してください')

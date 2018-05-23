@@ -20,9 +20,14 @@
 
 FactoryBot.define do
   factory :user do
+    sequence :email do |n|
+      "test#{n}@example.com"
+    end
+    sequence :name do |n|
+      "test_name#{n}"
+    end
+
     password = Faker::Internet.password
-    name Faker::Name.last_name
-    email Faker::Internet.free_email
     password password
     password_confirmation password
   end

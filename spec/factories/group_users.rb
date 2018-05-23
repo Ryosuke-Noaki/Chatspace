@@ -11,7 +11,7 @@
 
 FactoryBot.define do
   factory :group_user do
-    user
-    group
+    association :user, factory: :user
+    association :group, factory: :group
   end
 end

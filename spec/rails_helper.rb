@@ -8,6 +8,11 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f}
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.include ControllerMacros, type: :controller
+
   config.include FactoryBot::Syntax::Methods
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

@@ -17,11 +17,6 @@ RSpec.describe GroupUser, type: :model do
     let(:group) { create(:group) }
 
     context 'can save' do
-      it 'is valid with attributes' do
-        group_user = build(:group_user, user: user, group: group)
-        expect(group_user.valid?).to be true
-      end
-
       it 'is valid with group_id and user_id' do
         group_user = build(:group_user, group_id: group.id, user_id: user.id)
         expect(group_user.valid?).to be true
@@ -29,12 +24,6 @@ RSpec.describe GroupUser, type: :model do
     end
 
     context 'can not save' do
-      it 'is invalid without group_id' do
-        group_user = build(:group_user, group_id: 'hoge')
-        group_user.valid?
-        expect(group_user.errors[:group_id]).to include('は数値で入力してください')
-      end
-
       it 'is invalid without group_id' do
         group_user = build(:group_user, group_id: nil)
         group_user.valid?
@@ -48,21 +37,29 @@ RSpec.describe GroupUser, type: :model do
       end
 
       it 'is invalid without user_id'do
-        group_user = build(:group_user, user: user, group: group, user_id: 'fuga')
+        group_user = build(:group_user, user_id: nil)
         group_user.valid?
         expect(group_user.errors[:user_id]).to include('は数値で入力してください')
       end
 
       it 'is invalid without user_id'do
-        group_user = build(:group_user, user: user, group: group, user_id: nil)
+        group_user = build(:group_user, user_id: '')
+        group_user.valid?
+        expect(group_user.errors[:user_id]).to include('は数値で入力してください')
+      end
+    end
+
+    context 'can not save in string' do
+      it 'is invalid without user_id'do
+        group_user = build(:group_user, user_id: "hoge")
         group_user.valid?
         expect(group_user.errors[:user_id]).to include('は数値で入力してください')
       end
 
-      it 'is invalid without user_id'do
-        group_user = build(:group_user, user: user, group: group, user_id: '')
+      it 'is invalid without group_id' do
+        group_user = build(:group_user, group_id: "fuga")
         group_user.valid?
-        expect(group_user.errors[:user_id]).to include('は数値で入力してください')
+        expect(group_user.errors[:group_id]).to include('は数値で入力してください')
       end
     end
   end

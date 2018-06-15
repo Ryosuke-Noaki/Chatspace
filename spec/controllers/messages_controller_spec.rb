@@ -17,6 +17,14 @@ describe MessagesController do
         expect(assigns(:message)).to be_a_new(Message)
       end
 
+      it 'assigns @messages' do
+        expect(assigns(:messages)).to include message
+      end
+
+      it 'assigns @current_user_groups' do
+        expect(assigns(:current_user_groups)).to be_decorated_with Draper::CollectionDecorator
+      end
+
       it 'assigns @group' do
         expect(assigns(:group)).to eq group
       end
@@ -48,8 +56,7 @@ describe MessagesController do
       end
 
       it 'redirects to group_messages_path' do
-        post :create, params: { message: message_attributes, group_id: group.id}, session: {}
-        message = Message.last
+        post :create, params: { message: message_attributes, group_id: group.id}
         expect(response).to redirect_to(group_messages_path(group))
       end
     end

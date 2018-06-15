@@ -18,7 +18,7 @@ describe MessagesController do
       end
 
       it 'assigns @messages' do
-        expect(assigns(:messages)).to include message
+        expect(assigns(:messages)).to be_decorated_with Draper::CollectionDecorator
       end
 
       it 'assigns @current_user_groups' do

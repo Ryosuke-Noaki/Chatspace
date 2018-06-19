@@ -4,6 +4,7 @@ describe MessagesController do
   let(:group) { create(:group) }
   let(:user) { create(:user) }
   let(:message) { create(:message, group_id: group.id) }
+  let!(:messages) { create_list(:message, 3, group_id: group.id)}
   let(:message_attributes) { attributes_for(:message) }
 
   describe 'GET #index' do
@@ -18,7 +19,8 @@ describe MessagesController do
       end
 
       it 'assigns @messages' do
-        expect(assigns(:messages)).to be_decorated_with Draper::CollectionDecorator
+        group_messages = group.messages
+        expect(assigns(:messages)).to eq group_messages
       end
 
       it 'assigns @current_user_groups' do

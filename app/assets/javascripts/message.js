@@ -16,6 +16,7 @@ $(function() {
                     <% end %>
                   </div>
                 </div>`
+    return html;
   }
 
   $('#new_message').on('submit', function(e) {
@@ -36,11 +37,11 @@ $(function() {
       $('.main-content__chat-contents').append(html)
       $('#message_body').val('')
       $('.chat-body').animate ({
-        hight: "500px";
+        height: "500px"
       });
     })
     .fail(function(){
-      alert('error');
+      alert('メッセージの送信に失敗しました');
     })
   })
 });

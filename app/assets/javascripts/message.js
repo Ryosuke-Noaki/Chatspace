@@ -1,21 +1,22 @@
 $(function() {
   function buildHTML(message){
-    var html = `<div class = 'chat-body'>
-                  <div class = 'chat-body--name' >
-                    <%= message.user_name %>
+    var insertImage = '';
+    if (message.image_url) {
+      insertImage = `<img src="${message.image_url}">`;
+    }
+    var html = `<div class='chat-body' data-message-id="${message.id}">
+                  <div class='chat-body--name'>
+                    ${message.name}
                   </div>
-                  <div class = 'chat-body--time' >
-                    <%= message.created_at %>
+                  <div class='chat-body--time'>
+                    ${message.created_at}
                   </div>
-                  <div class = 'chat-body--message' >
-                    <%= if message.body.present? %>
-                      <div class = 'chat-body--message__content' >
-                        <%= message.body %>
+                  <div class='chat-body--message'>
+                    ${message.body}
                       </div>
-                    <%= image_tag message.image_url %>
-                    <% end %>
+                    ${insertImage}
                   </div>
-                </div>`
+                </div>`;
     return html;
   }
 
@@ -36,12 +37,29 @@ $(function() {
       var html = buildHTML(data);
       $('.main-content__chat-contents').append(html)
       $('#message_body').val('')
-      $('.chat-body').animate ({
-        height: "500px"
-      });
+      // $('.chat-body').animate ({
+      //   height: "500px"
+      // });
     })
     .fail(function(){
       alert('メッセージの送信に失敗しました');
     })
   })
 });
+
+// setInterval(function() {
+//   $.ajax({
+//     url: location.href.json,
+//   })
+
+  // .done(function(json) {
+  //   var insertHTML = '';
+  //   json.messages.forEach(function(message) {
+  //     insertHTML += buildHTML(message);
+  //   });
+  //   $('.chat-body').html(insertHTML);
+  // })
+  // .fail(function(data) {
+  //   alert('自動更新に失敗しました');
+  // },5000);
+// });

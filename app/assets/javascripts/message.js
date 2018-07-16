@@ -37,9 +37,7 @@ $(function() {
       var html = buildHTML(data);
       $('.main-content__chat-contents').append(html)
       $('#message_body').val('')
-      // $('.chat-body').animate ({
-      //   height: "500px"
-      // });
+      $('.chat-body').animate({scrollTop: $(".chat-body")[0].scrollHeight}, 1500);
     })
     .fail(function(){
       alert('メッセージの送信に失敗しました');
@@ -52,14 +50,14 @@ $(function() {
 //     url: location.href.json,
 //   })
 
-  // .done(function(json) {
-  //   var insertHTML = '';
-  //   json.messages.forEach(function(message) {
-  //     insertHTML += buildHTML(message);
-  //   });
-  //   $('.chat-body').html(insertHTML);
-  // })
-  // .fail(function(data) {
-  //   alert('自動更新に失敗しました');
-  // },5000);
+//   .done(function(json) {
+//     var insertHTML = '';
+//     json.messages.forEach(function(message) {
+//       insertHTML += buildHTML(message);
+//     });
+//     $('.chat-body').html(insertHTML);
+//   })
+//   .fail(function(data) {
+//     alert('自動更新に失敗しました');
+//   },5000);
 // });

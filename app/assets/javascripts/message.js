@@ -4,6 +4,7 @@ $(function() {
     if (message.image_url) {
       insertImage = `<img src="${message.image_url}">`;
     }
+    console.log("hello");
     var html = `<div class='chat-body' data-message-id="${message.id}">
                   <div class='chat-body--name'>
                     ${message.name}
@@ -43,21 +44,36 @@ $(function() {
       alert('メッセージの送信に失敗しました');
     })
   })
+
+  function scroll() {
+    $('.chat-body').animate({scrollTop: $('.chat-body')[0].scrollHeight}, 'fast')
+  }
+
+  var interval = setInterval(function() {
+      if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+    $.ajax({
+      url: location.href.json,
+      type: 'GET',
+      dataType: 'json'
+    })
+
+    .done(function(json) {
+      var id = $('.main-content__chat-contents').data('.main-content__chat-contents');
+      var insertHTML = '';
+      json.messages.forEach(function(message) {
+        if (message.id > id ) {
+          console.log("hoge");
+          buildHTML(message);
+        }
+      });
+      $('.chat-body').prepend(insertHTML);
+    scroll()
+    })
+
+    .fail(function(json) {
+      alert('自動更新に失敗しました');
+    });
+    } else {
+    clearInterval(interval);
+   }} , 5 * 1000 );
 });
-
-// setInterval(function() {
-//   $.ajax({
-//     url: location.href.json,
-//   })
-
-//   .done(function(json) {
-//     var insertHTML = '';
-//     json.messages.forEach(function(message) {
-//       insertHTML += buildHTML(message);
-//     });
-//     $('.chat-body').html(insertHTML);
-//   })
-//   .fail(function(data) {
-//     alert('自動更新に失敗しました');
-//   },5000);
-// });

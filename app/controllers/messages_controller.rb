@@ -6,6 +6,10 @@ class MessagesController < ApplicationController
     @messages = @group.messages.includes(:user).decorate
     current_user_groups = current_user.groups
     @current_user_groups = GroupDecorator.decorate_collection(current_user_groups)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
 

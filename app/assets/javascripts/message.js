@@ -4,8 +4,7 @@ $(function() {
     if (message.image_url) {
       insertImage = `<img src="${message.image_url}">`;
     }
-    console.log("hello");
-    var html = `<div class='chat-body' data-message-id="${message.id}">
+    var html = `<div class='chat-body' data-id="${message.id}">
                   <div class='chat-body--name'>
                     ${message.name}
                   </div>
@@ -58,15 +57,14 @@ $(function() {
     })
 
     .done(function(json) {
-      var id = $('.main-content__chat-contents').data('.main-content__chat-contents');
+      var last_message_id = $('.chat-body:last').data('id');
       var insertHTML = '';
       json.messages.forEach(function(message) {
-        if (message.id > id ) {
-          console.log("hoge");
-          buildHTML(message);
+        if (message.id > last_message_id ) {
+          insertHTML += buildHTML(message);
         }
       });
-      $('.chat-body').prepend(insertHTML);
+      $('.main-content__chat-contents').append(insertHTML);
     scroll()
     })
 
